@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <Version>1.0.0</Version>
+        <Authors>Ben Hutchison</Authors>
+        <Copyright>© 2024 $(Authors)</Copyright>
+        <Company>$(Authors)</Company>
+        <NoWarn>1701;1702;CS8524;CS8509;IDE0079</NoWarn>
+        <PackageProjectUrl>https://github.com/Aldaviva/UnionTypes</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Aldaviva/UnionTypes.git</RepositoryUrl>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <Description>Union types in C# implemented with implicit casts</Description>
+        <PackageTags>union types</PackageTags>
+        <!-- <PackageIcon>icon.jpg</PackageIcon> -->
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <IncludeSource>true</IncludeSource>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+        <!-- <None Include="icon.jpg" Pack="true" PackagePath="\" /> -->
+        <None Include="..\Readme.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true' or '$(Configuration)' == 'Release'">
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    </PropertyGroup>
+
+</Project>
