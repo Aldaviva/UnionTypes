@@ -1,7 +1,7 @@
 UnionTypes
 ===
 
-[![NuGet](https://img.shields.io/nuget/v/UnionTypes)](https://www.nuget.org/packages/UnionTypes/)
+[![NuGet](https://img.shields.io/nuget/v/UnionTypes)](https://www.nuget.org/packages/UnionTypes/) [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Aldaviva/UnionTypes/dotnetpackage.yml?branch=master&logo=github)](https://github.com/Aldaviva/UnionTypes/actions/workflows/dotnetpackage.yml)
 
 ## Introduction
 

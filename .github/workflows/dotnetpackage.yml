@@ -1,0 +1,33 @@
+name: .NET
+
+on:
+  push:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    env:
+      ProjectName: UnionTypes
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Clone
+      uses: actions/checkout@v4
+
+    - name: Restore
+      run: dotnet restore --verbosity normal
+
+    - name: Build
+      run: dotnet build --no-restore --configuration Release --verbosity normal
+
+    - name: Pack
+      run: dotnet pack ${{ env.ProjectName }} --no-build --configuration Release --verbosity normal
+
+    - name: Upload package
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.ProjectName }}.nupkg
+        path: ${{ env.ProjectName }}/bin/Release/*.*nupkg
