@@ -1,6 +1,8 @@
 UnionTypes
 ===
 
+[![NuGet](https://img.shields.io/nuget/v/UnionTypes)](https://www.nuget.org/packages/UnionTypes/)
+
 ## Introduction
 
 A union type is a type whose value can be any one of a specific set of types. For example, you may define a union type whose value must be either an `int` or a `string`.
@@ -10,6 +12,8 @@ Once defined, you can use instances of this union in a type safe way. For exampl
 ## Usage
 
 ### Dependencies
+
+[This package is available on NuGet Gallery.](https://www.nuget.org/packages/UnionTypes/)
 
 ```sh
 dotnet add package UnionTypes
