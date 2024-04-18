@@ -5,6 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RollForward>latestMajor</RollForward>
+        <NoWarn>1701;1702;8524</NoWarn>
 
         <IsPackable>false</IsPackable>
         <IsTestProject>true</IsTestProject>

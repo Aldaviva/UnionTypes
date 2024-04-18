@@ -28,7 +28,7 @@ string message = string.Join(' ', path); // "xConfiguration Network 1 DNS Server
 
 ### Reading
 
-For each of the union's constituent types, you can test if the value of an instance of the union type is of that constituent type with the `HasValue1` and other properties. You can get the strongly-typed value with the related `Value1` and other properties.
+For each of the union's constituent types, you can test if the value of an instance of the union type is of that constituent type with the `HasValue1` and other properties, or `ValueIndex`. You can get the strongly-typed value with the related `Value1` and other properties.
 
 ```cs
 if (path[0].HasValue1) {
@@ -43,9 +43,15 @@ if (path[0] is { HasValue1: true, Value1: var firstItem }) {
 ```
 
 ```cs
+if (path[0].ValueIndex == Union2Index.Value1) {
+    string message = $"First item is the string {path[0].Value1}"; // "First item is xConfiguration"
+}
+```
+
+```cs
 string message = path[0] switch {
-    { HasValue1: true, Value1: var first } => $"First item is string {first?.Trim()}",
-    { HasValue2: true, Value2: var first } => $"First item is int {Math.Abs(first)}",
+    { ValueIndex: Union2Index.Value1, Value1: var first } => $"First item is string {first?.Trim()}",
+    { ValueIndex: Union2Index.Value2, Value2: var first } => $"First item is int {Math.Abs(first)}",
 };
 ```
 
