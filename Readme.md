@@ -15,6 +15,8 @@ Once defined, you can use instances of this union in a type safe way. For exampl
 
 [This package is available on NuGet Gallery.](https://www.nuget.org/packages/UnionTypes/)
 
+It can run in .NET Standard 2.0 runtimes and later, as well as .NET Framework 4.5.2 and later.
+
 ```sh
 dotnet add package UnionTypes
 ```

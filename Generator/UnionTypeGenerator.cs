@@ -9,7 +9,7 @@ public class UnionTypeGenerator(int typeCount) {
     private static readonly Encoding Utf8 = new UTF8Encoding(false, true);
 
     public static async Task Main() {
-        for (int unionSize = 3; unionSize <= MaxUnionSize; unionSize++) {
+        for (int unionSize = 2; unionSize <= MaxUnionSize; unionSize++) {
             UnionTypeGenerator generator    = new(unionSize);
             string             filePath     = Path.GetFullPath($@"..\..\..\..\UnionTypes\Union{unionSize}.cs");
             string             fileContents = generator.GenerateUnionType();
