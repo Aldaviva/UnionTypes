@@ -189,20 +189,16 @@ public class UnionTypeGenerator(int typeCount) {
           }
           """;
 
-    private static string Nth(int i) => i.ToString("N0") + Math.Abs(i) switch {
-        11 or 12 or 13     => "th",
-        _ when i % 10 is 1 => "st",
-        _ when i % 10 is 2 => "nd",
-        _ when i % 10 is 3 => "rd",
-        _                  => "th"
+    private static string Nth(int n) => n.ToString("N0") + Math.Abs(n) switch {
+        11 or 12 or 13             => "th",
+        var abs when abs % 10 is 1 => "st",
+        var abs when abs % 10 is 2 => "nd",
+        var abs when abs % 10 is 3 => "rd",
+        _                          => "th"
     };
 
-    private string GenericPlaceholders() {
-        return JoinEach(i => $"T{i}", ", ");
-    }
+    private string GenericPlaceholders() => JoinEach(i => $"T{i}", ", ");
 
-    private string JoinEach(Func<int, string> f, string joiner = "\r\n") {
-        return string.Join(joiner, Enumerable.Range(1, typeCount).Select(f));
-    }
+    private string JoinEach(Func<int, string> f, string joiner = "\r\n") => string.Join(joiner, Enumerable.Range(1, typeCount).Select(f));
 
 }
