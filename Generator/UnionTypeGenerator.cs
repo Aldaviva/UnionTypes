@@ -23,6 +23,7 @@ public class UnionTypeGenerator(int typeCount) {
           using System;
           using System.CodeDom.Compiler;
           using System.Collections.Generic;
+          using System.Diagnostics;
 
           namespace UnionTypes;
 
@@ -32,7 +33,7 @@ public class UnionTypeGenerator(int typeCount) {
           [GeneratedCode("Aldaviva/UnionTypes", null)]
           public enum Union{{typeCount}}Index {
 
-          {{JoinEach(i => $"    /// <summary>Union type's value is of the union's {Nth(i)} type</summary>\r\nValue{i} = {i}", ",\r\n\r\n")}}
+          {{JoinEach(i => $"    /// <summary>Union type's value is of the union's {Nth(i)} type</summary>\r\n    Value{i} = {i}", ",\r\n\r\n")}}
 
           }
 
@@ -41,6 +42,7 @@ public class UnionTypeGenerator(int typeCount) {
           /// </summary>
           {{JoinEach(i => $"/// <typeparam name=\"T{i}\">Possible type of value {i}</typeparam>")}}
           [GeneratedCode("Aldaviva/UnionTypes", null)]
+          [DebuggerDisplay("{Value}")]
           public readonly struct Union<{{GenericPlaceholders()}}>: IUnion, IEquatable<Union<{{GenericPlaceholders()}}>> {
             
               /// <summary>
@@ -48,16 +50,16 @@ public class UnionTypeGenerator(int typeCount) {
               /// </summary>
               public Union{{typeCount}}Index ValueIndex { get; }
               
-          {{JoinEach(i => $"    /// <summary>The value of the union type if <see cref=\"HasValue{i}\"/> is <c>true</c>, or equivalently if <see cref=\"ValueIndex\"/> is <see cref=\"Union{typeCount}Index.Value{i}\"/>; otherwise <c>null</c>.</summary>\r\n    public T{i}? Value{i} {{ get; }}", "\r\n\r\n")}}
+          {{JoinEach(i => $"    /// <summary>The value of the union type if <see cref=\"HasValue{i}\"/> is <c>true</c>, or equivalently if <see cref=\"ValueIndex\"/> is <see cref=\"Union{typeCount}Index.Value{i}\"/>; otherwise <c>default</c>.</summary>\r\n    public T{i}? Value{i} {{ get; }}", "\r\n\r\n")}}
 
           {{JoinEach(i =>
               $$"""
                     /// <summary>
                     /// Create an instance of the union type with the given value.
                     /// </summary>
-                    /// <param name="value">The value of the union type</param>
-                    public Union(T{{i}}? value) {
-                        Value{{i}} = value;
+                    /// <param name="value{{i}}">The value of the union type</param>
+                    public Union(T{{i}}? value{{i}}) {
+                        Value{{i}} = value{{i}};
                         ValueIndex = Union{{typeCount}}Index.Value{{i}};
                     }
                 """, "\r\n\r\n")}}
@@ -65,6 +67,11 @@ public class UnionTypeGenerator(int typeCount) {
               /// <inheritdoc />
               public object? Value => ValueIndex switch {
           {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => Value{i}", ",\r\n")}}
+              };
+              
+              /// <inheritdoc />
+              public Type ValueType => ValueIndex switch {
+          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => typeof(T{i})", ",\r\n")}}
               };
               
           {{JoinEach(i => $"    /// <summary><c>true</c> if the value of the union type is <see cref=\"Value1\"/>, false otherwise</summary>\r\n    public bool HasValue{i} => ValueIndex == Union{typeCount}Index.Value{i};")}}
@@ -168,6 +175,17 @@ public class UnionTypeGenerator(int typeCount) {
                     }
                 """, "\r\n\r\n")}}
                 
+              /// <summary>
+              /// <para>Deconstruct union type into variables, one of which will be <see cref="Value"/> and the rest of which will be <c>default</c>.</para>
+              /// <para>Can be called with tuple assignment syntax:</para>
+              /// <para><c>({{JoinEach(i => $"T{i}? val{i}", ", ")}}) = myUnionType;</c></para>
+              /// <para>Can also be called directly with <c>out</c> variables:</para>
+              /// <para><c>myUnionType.Deconstruct({{JoinEach(i => $"out T{i}? val{i}", ", ")}});</c></para>
+              /// </summary>
+          {{JoinEach(i => $"    /// <param name=\"value{i}\">Value of type <typeparamref name=\"T{i}\"/> if <see cref=\"ValueIndex\"/> is <see cref=\"Union{typeCount}Index.Value{i}\"/>, otherwise <c>default</c>.</param>")}}
+              public void Deconstruct({{JoinEach(i => $"out T{i}? value{i}", ", ")}}) {
+          {{JoinEach(i => $"        value{i} = Value{i};")}}
+              }
           }
           """;
 

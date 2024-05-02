@@ -1,6 +1,9 @@
 using FluentAssertions;
 using UnionTypes;
 
+#pragma warning disable CS8509 // The switch expression does not handle all possible values of its input type (it is not exhaustive).
+#pragma warning disable CS1718 // Comparison made to same variable
+
 // ReSharper disable EqualExpressionComparison
 // ReSharper disable SuspiciousTypeConversion.Global
 
@@ -35,6 +38,7 @@ public class UnitTest1 {
         a.Value.Should().Be("a");
         a.HasValue1.Should().BeTrue();
         a.Value1.Should().Be("a");
+        a.ValueType.Should().Be(typeof(string));
 
         Union<double, string> c = "a";
         a.Equals(c).Should().BeTrue();
@@ -75,6 +79,64 @@ public class UnitTest1 {
         a.GetHashCode().Should().NotBe(b.GetHashCode());
         (a == 1).Should().BeFalse();
         (a != 1).Should().BeTrue();
+    }
+
+    [Fact]
+    public void Switching() {
+        Union<string, int> a = "a";
+        string actual = a switch {
+            { Value1: { } val } => val,
+            { Value2: var val } => val.ToString()
+        };
+        actual.Should().Be("a");
+
+        Union<string, int> b = 8;
+        actual = b switch {
+            { Value1: { } val } => val,
+            { Value2: var val } => val.ToString()
+        };
+        actual.Should().Be("8");
+
+        Union<int, long> c = 17;
+        actual = c switch {
+            { ValueIndex: Union2Index.Value1, Value1: var val } => "int " + val,
+            { ValueIndex: Union2Index.Value2, Value2: var val } => "long " + val
+        };
+        actual.Should().Be("int 17");
+
+        Union<int, long> d = 88L;
+        actual = d switch {
+            { HasValue1: true, Value1: var val } => "int " + val,
+            { HasValue2: true, Value2: var val } => "long " + val
+        };
+        actual.Should().Be("long 88");
+
+        actual = d switch {
+            { Value: int val }  => "int " + val,
+            { Value: long val } => "long " + val
+        };
+        actual.Should().Be("long 88");
+    }
+
+    [Fact]
+    public void Deconstruction() {
+        Union<string, int> a = "a";
+        (string? actual1, int actual2) = a;
+        actual1.Should().Be("a");
+        actual2.Should().Be(default);
+
+        a.Deconstruct(out actual1, out actual2);
+        actual1.Should().Be("a");
+        actual2.Should().Be(default);
+    }
+
+    [Fact]
+    public void SameType() {
+        Union<int, int> allInts = new(value1: 1);
+        allInts.HasValue1.Should().BeTrue();
+        allInts.ValueIndex.Should().Be(Union2Index.Value1);
+        allInts.Value1.Should().Be(1);
+        allInts.Value2.Should().Be(default);
     }
 
 }

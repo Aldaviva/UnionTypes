@@ -1,4 +1,6 @@
-﻿namespace UnionTypes;
+﻿using System;
+
+namespace UnionTypes;
 
 /// <summary>
 /// <para>Non-generic union type that can return a weakly-typed value.</para>
@@ -11,5 +13,10 @@ public interface IUnion {
     /// <para>To get a strongly typed value, use <c>Value1</c>, <c>Value2</c>, etc.</para>
     /// </summary>
     object? Value { get; }
+
+    /// <summary>
+    /// Get the type of <see cref="Value"/>.
+    /// </summary>
+    Type ValueType { get; }
 
 }

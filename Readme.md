@@ -7,7 +7,7 @@ UnionTypes
 
 A union type is a type whose value can be any one of a specific set of types. For example, you may define a union type whose value must be either an `int` or a `string`.
 
-Once defined, you can use instances of this union in a type safe way. For example, if you want a list that can contain only `string` and `int` values, but no other types, you can create a `List<T>` whose generic type is your new union type, instead of making a `List<object>` that could allow values of other types to be added. This way, you don't have to check if each value is a `string` or `int` when you read them, because it's statically guaranteed at compile time.
+Once defined, you can use instances of this union in a type safe way. For example, if you want a list that can contain only `string` and `int` values, but no other types, you can create a `List<T>` whose generic type is your new union type, instead of making a `List<object>` that could allow values of other types to be added. This way, you don't have to check whether or not each value is either a `string` or `int` when you read them, because it's statically guaranteed at compile time.
 
 ## Usage
 
@@ -30,6 +30,16 @@ Union<string, int> myUnion = "hi";
 
 IList<Union<string, int>> path = ["xConfiguration", "Network", 1, "DNS", "Server", 3, "Address"];
 string message = string.Join(' ', path); // "xConfiguration Network 1 DNS Server 3 Address"
+```
+
+#### Type alias
+
+You can make the type more readable by [aliasing](https://blog.jetbrains.com/dotnet/2023/09/25/rsrp-2023-3-eap1/#working-with-aliases) a meaningful name to it. This is a C# 12 feature.
+
+```cs
+using XPathSegment = Union<string, int>;
+
+IList<XPathSegment> path = ["xConfiguration", "Network", 1, "DNS", "Server", 3, "Address"];
 ```
 
 ### Reading
@@ -64,7 +74,7 @@ string message = path[0] switch {
 If you don't need the value to be strongly typed, you can get it as an `object` using the `Value` property.
 
 ```cs
-Console.WriteLine(path[0].Value);
+Console.WriteLine($"{path[0].ValueType} {path[0].Value}); // System.String xConfiguration
 ```
 
 ## Union size

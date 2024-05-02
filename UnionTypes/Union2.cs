@@ -1,6 +1,7 @@
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace UnionTypes;
 
@@ -11,10 +12,10 @@ namespace UnionTypes;
 public enum Union2Index {
 
     /// <summary>Union type's value is of the union's 1st type</summary>
-Value1 = 1,
+    Value1 = 1,
 
     /// <summary>Union type's value is of the union's 2nd type</summary>
-Value2 = 2
+    Value2 = 2
 
 }
 
@@ -24,6 +25,7 @@ Value2 = 2
 /// <typeparam name="T1">Possible type of value 1</typeparam>
 /// <typeparam name="T2">Possible type of value 2</typeparam>
 [GeneratedCode("Aldaviva/UnionTypes", null)]
+[DebuggerDisplay("{Value}")]
 public readonly struct Union<T1, T2>: IUnion, IEquatable<Union<T1, T2>> {
   
     /// <summary>
@@ -31,27 +33,27 @@ public readonly struct Union<T1, T2>: IUnion, IEquatable<Union<T1, T2>> {
     /// </summary>
     public Union2Index ValueIndex { get; }
     
-    /// <summary>The value of the union type if <see cref="HasValue1"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union2Index.Value1"/>; otherwise <c>null</c>.</summary>
+    /// <summary>The value of the union type if <see cref="HasValue1"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union2Index.Value1"/>; otherwise <c>default</c>.</summary>
     public T1? Value1 { get; }
 
-    /// <summary>The value of the union type if <see cref="HasValue2"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union2Index.Value2"/>; otherwise <c>null</c>.</summary>
+    /// <summary>The value of the union type if <see cref="HasValue2"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union2Index.Value2"/>; otherwise <c>default</c>.</summary>
     public T2? Value2 { get; }
 
     /// <summary>
     /// Create an instance of the union type with the given value.
     /// </summary>
-    /// <param name="value">The value of the union type</param>
-    public Union(T1? value) {
-        Value1 = value;
+    /// <param name="value1">The value of the union type</param>
+    public Union(T1? value1) {
+        Value1 = value1;
         ValueIndex = Union2Index.Value1;
     }
 
     /// <summary>
     /// Create an instance of the union type with the given value.
     /// </summary>
-    /// <param name="value">The value of the union type</param>
-    public Union(T2? value) {
-        Value2 = value;
+    /// <param name="value2">The value of the union type</param>
+    public Union(T2? value2) {
+        Value2 = value2;
         ValueIndex = Union2Index.Value2;
     }
   
@@ -59,6 +61,12 @@ public readonly struct Union<T1, T2>: IUnion, IEquatable<Union<T1, T2>> {
     public object? Value => ValueIndex switch {
         Union2Index.Value1 => Value1,
         Union2Index.Value2 => Value2
+    };
+    
+    /// <inheritdoc />
+    public Type ValueType => ValueIndex switch {
+        Union2Index.Value1 => typeof(T1),
+        Union2Index.Value2 => typeof(T2)
     };
     
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
@@ -218,4 +226,17 @@ public readonly struct Union<T1, T2>: IUnion, IEquatable<Union<T1, T2>> {
         return !right.Equals(left);
     }
       
+    /// <summary>
+    /// <para>Deconstruct union type into variables, one of which will be <see cref="Value"/> and the rest of which will be <c>default</c>.</para>
+    /// <para>Can be called with tuple assignment syntax:</para>
+    /// <para><c>(T1? val1, T2? val2) = myUnionType;</c></para>
+    /// <para>Can also be called directly with <c>out</c> variables:</para>
+    /// <para><c>myUnionType.Deconstruct(out T1? val1, out T2? val2);</c></para>
+    /// </summary>
+    /// <param name="value1">Value of type <typeparamref name="T1"/> if <see cref="ValueIndex"/> is <see cref="Union2Index.Value1"/>, otherwise <c>default</c>.</param>
+    /// <param name="value2">Value of type <typeparamref name="T2"/> if <see cref="ValueIndex"/> is <see cref="Union2Index.Value2"/>, otherwise <c>default</c>.</param>
+    public void Deconstruct(out T1? value1, out T2? value2) {
+        value1 = Value1;
+        value2 = Value2;
+    }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace UnionTypes;
 
@@ -11,40 +12,40 @@ namespace UnionTypes;
 public enum Union12Index {
 
     /// <summary>Union type's value is of the union's 1st type</summary>
-Value1 = 1,
+    Value1 = 1,
 
     /// <summary>Union type's value is of the union's 2nd type</summary>
-Value2 = 2,
+    Value2 = 2,
 
     /// <summary>Union type's value is of the union's 3rd type</summary>
-Value3 = 3,
+    Value3 = 3,
 
     /// <summary>Union type's value is of the union's 4th type</summary>
-Value4 = 4,
+    Value4 = 4,
 
     /// <summary>Union type's value is of the union's 5th type</summary>
-Value5 = 5,
+    Value5 = 5,
 
     /// <summary>Union type's value is of the union's 6th type</summary>
-Value6 = 6,
+    Value6 = 6,
 
     /// <summary>Union type's value is of the union's 7th type</summary>
-Value7 = 7,
+    Value7 = 7,
 
     /// <summary>Union type's value is of the union's 8th type</summary>
-Value8 = 8,
+    Value8 = 8,
 
     /// <summary>Union type's value is of the union's 9th type</summary>
-Value9 = 9,
+    Value9 = 9,
 
     /// <summary>Union type's value is of the union's 10th type</summary>
-Value10 = 10,
+    Value10 = 10,
 
     /// <summary>Union type's value is of the union's 11th type</summary>
-Value11 = 11,
+    Value11 = 11,
 
     /// <summary>Union type's value is of the union's 12th type</summary>
-Value12 = 12
+    Value12 = 12
 
 }
 
@@ -64,6 +65,7 @@ Value12 = 12
 /// <typeparam name="T11">Possible type of value 11</typeparam>
 /// <typeparam name="T12">Possible type of value 12</typeparam>
 [GeneratedCode("Aldaviva/UnionTypes", null)]
+[DebuggerDisplay("{Value}")]
 public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>: IUnion, IEquatable<Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>> {
   
     /// <summary>
@@ -71,147 +73,147 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>:
     /// </summary>
     public Union12Index ValueIndex { get; }
     
-    /// <summary>The value of the union type if <see cref="HasValue1"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value1"/>; otherwise <c>null</c>.</summary>
+    /// <summary>The value of the union type if <see cref="HasValue1"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value1"/>; otherwise <c>default</c>.</summary>
     public T1? Value1 { get; }
 
-    /// <summary>The value of the union type if <see cref="HasValue2"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value2"/>; otherwise <c>null</c>.</summary>
+    /// <summary>The value of the union type if <see cref="HasValue2"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value2"/>; otherwise <c>default</c>.</summary>
     public T2? Value2 { get; }
 
-    /// <summary>The value of the union type if <see cref="HasValue3"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value3"/>; otherwise <c>null</c>.</summary>
+    /// <summary>The value of the union type if <see cref="HasValue3"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value3"/>; otherwise <c>default</c>.</summary>
     public T3? Value3 { get; }
 
-    /// <summary>The value of the union type if <see cref="HasValue4"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value4"/>; otherwise <c>null</c>.</summary>
+    /// <summary>The value of the union type if <see cref="HasValue4"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value4"/>; otherwise <c>default</c>.</summary>
     public T4? Value4 { get; }
 
-    /// <summary>The value of the union type if <see cref="HasValue5"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value5"/>; otherwise <c>null</c>.</summary>
+    /// <summary>The value of the union type if <see cref="HasValue5"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value5"/>; otherwise <c>default</c>.</summary>
     public T5? Value5 { get; }
 
-    /// <summary>The value of the union type if <see cref="HasValue6"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value6"/>; otherwise <c>null</c>.</summary>
+    /// <summary>The value of the union type if <see cref="HasValue6"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value6"/>; otherwise <c>default</c>.</summary>
     public T6? Value6 { get; }
 
-    /// <summary>The value of the union type if <see cref="HasValue7"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value7"/>; otherwise <c>null</c>.</summary>
+    /// <summary>The value of the union type if <see cref="HasValue7"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value7"/>; otherwise <c>default</c>.</summary>
     public T7? Value7 { get; }
 
-    /// <summary>The value of the union type if <see cref="HasValue8"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value8"/>; otherwise <c>null</c>.</summary>
+    /// <summary>The value of the union type if <see cref="HasValue8"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value8"/>; otherwise <c>default</c>.</summary>
     public T8? Value8 { get; }
 
-    /// <summary>The value of the union type if <see cref="HasValue9"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value9"/>; otherwise <c>null</c>.</summary>
+    /// <summary>The value of the union type if <see cref="HasValue9"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value9"/>; otherwise <c>default</c>.</summary>
     public T9? Value9 { get; }
 
-    /// <summary>The value of the union type if <see cref="HasValue10"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value10"/>; otherwise <c>null</c>.</summary>
+    /// <summary>The value of the union type if <see cref="HasValue10"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value10"/>; otherwise <c>default</c>.</summary>
     public T10? Value10 { get; }
 
-    /// <summary>The value of the union type if <see cref="HasValue11"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value11"/>; otherwise <c>null</c>.</summary>
+    /// <summary>The value of the union type if <see cref="HasValue11"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value11"/>; otherwise <c>default</c>.</summary>
     public T11? Value11 { get; }
 
-    /// <summary>The value of the union type if <see cref="HasValue12"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value12"/>; otherwise <c>null</c>.</summary>
+    /// <summary>The value of the union type if <see cref="HasValue12"/> is <c>true</c>, or equivalently if <see cref="ValueIndex"/> is <see cref="Union12Index.Value12"/>; otherwise <c>default</c>.</summary>
     public T12? Value12 { get; }
 
     /// <summary>
     /// Create an instance of the union type with the given value.
     /// </summary>
-    /// <param name="value">The value of the union type</param>
-    public Union(T1? value) {
-        Value1 = value;
+    /// <param name="value1">The value of the union type</param>
+    public Union(T1? value1) {
+        Value1 = value1;
         ValueIndex = Union12Index.Value1;
     }
 
     /// <summary>
     /// Create an instance of the union type with the given value.
     /// </summary>
-    /// <param name="value">The value of the union type</param>
-    public Union(T2? value) {
-        Value2 = value;
+    /// <param name="value2">The value of the union type</param>
+    public Union(T2? value2) {
+        Value2 = value2;
         ValueIndex = Union12Index.Value2;
     }
 
     /// <summary>
     /// Create an instance of the union type with the given value.
     /// </summary>
-    /// <param name="value">The value of the union type</param>
-    public Union(T3? value) {
-        Value3 = value;
+    /// <param name="value3">The value of the union type</param>
+    public Union(T3? value3) {
+        Value3 = value3;
         ValueIndex = Union12Index.Value3;
     }
 
     /// <summary>
     /// Create an instance of the union type with the given value.
     /// </summary>
-    /// <param name="value">The value of the union type</param>
-    public Union(T4? value) {
-        Value4 = value;
+    /// <param name="value4">The value of the union type</param>
+    public Union(T4? value4) {
+        Value4 = value4;
         ValueIndex = Union12Index.Value4;
     }
 
     /// <summary>
     /// Create an instance of the union type with the given value.
     /// </summary>
-    /// <param name="value">The value of the union type</param>
-    public Union(T5? value) {
-        Value5 = value;
+    /// <param name="value5">The value of the union type</param>
+    public Union(T5? value5) {
+        Value5 = value5;
         ValueIndex = Union12Index.Value5;
     }
 
     /// <summary>
     /// Create an instance of the union type with the given value.
     /// </summary>
-    /// <param name="value">The value of the union type</param>
-    public Union(T6? value) {
-        Value6 = value;
+    /// <param name="value6">The value of the union type</param>
+    public Union(T6? value6) {
+        Value6 = value6;
         ValueIndex = Union12Index.Value6;
     }
 
     /// <summary>
     /// Create an instance of the union type with the given value.
     /// </summary>
-    /// <param name="value">The value of the union type</param>
-    public Union(T7? value) {
-        Value7 = value;
+    /// <param name="value7">The value of the union type</param>
+    public Union(T7? value7) {
+        Value7 = value7;
         ValueIndex = Union12Index.Value7;
     }
 
     /// <summary>
     /// Create an instance of the union type with the given value.
     /// </summary>
-    /// <param name="value">The value of the union type</param>
-    public Union(T8? value) {
-        Value8 = value;
+    /// <param name="value8">The value of the union type</param>
+    public Union(T8? value8) {
+        Value8 = value8;
         ValueIndex = Union12Index.Value8;
     }
 
     /// <summary>
     /// Create an instance of the union type with the given value.
     /// </summary>
-    /// <param name="value">The value of the union type</param>
-    public Union(T9? value) {
-        Value9 = value;
+    /// <param name="value9">The value of the union type</param>
+    public Union(T9? value9) {
+        Value9 = value9;
         ValueIndex = Union12Index.Value9;
     }
 
     /// <summary>
     /// Create an instance of the union type with the given value.
     /// </summary>
-    /// <param name="value">The value of the union type</param>
-    public Union(T10? value) {
-        Value10 = value;
+    /// <param name="value10">The value of the union type</param>
+    public Union(T10? value10) {
+        Value10 = value10;
         ValueIndex = Union12Index.Value10;
     }
 
     /// <summary>
     /// Create an instance of the union type with the given value.
     /// </summary>
-    /// <param name="value">The value of the union type</param>
-    public Union(T11? value) {
-        Value11 = value;
+    /// <param name="value11">The value of the union type</param>
+    public Union(T11? value11) {
+        Value11 = value11;
         ValueIndex = Union12Index.Value11;
     }
 
     /// <summary>
     /// Create an instance of the union type with the given value.
     /// </summary>
-    /// <param name="value">The value of the union type</param>
-    public Union(T12? value) {
-        Value12 = value;
+    /// <param name="value12">The value of the union type</param>
+    public Union(T12? value12) {
+        Value12 = value12;
         ValueIndex = Union12Index.Value12;
     }
   
@@ -229,6 +231,22 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>:
         Union12Index.Value10 => Value10,
         Union12Index.Value11 => Value11,
         Union12Index.Value12 => Value12
+    };
+    
+    /// <inheritdoc />
+    public Type ValueType => ValueIndex switch {
+        Union12Index.Value1 => typeof(T1),
+        Union12Index.Value2 => typeof(T2),
+        Union12Index.Value3 => typeof(T3),
+        Union12Index.Value4 => typeof(T4),
+        Union12Index.Value5 => typeof(T5),
+        Union12Index.Value6 => typeof(T6),
+        Union12Index.Value7 => typeof(T7),
+        Union12Index.Value8 => typeof(T8),
+        Union12Index.Value9 => typeof(T9),
+        Union12Index.Value10 => typeof(T10),
+        Union12Index.Value11 => typeof(T11),
+        Union12Index.Value12 => typeof(T12)
     };
     
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
@@ -1088,4 +1106,37 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>:
         return !right.Equals(left);
     }
       
+    /// <summary>
+    /// <para>Deconstruct union type into variables, one of which will be <see cref="Value"/> and the rest of which will be <c>default</c>.</para>
+    /// <para>Can be called with tuple assignment syntax:</para>
+    /// <para><c>(T1? val1, T2? val2, T3? val3, T4? val4, T5? val5, T6? val6, T7? val7, T8? val8, T9? val9, T10? val10, T11? val11, T12? val12) = myUnionType;</c></para>
+    /// <para>Can also be called directly with <c>out</c> variables:</para>
+    /// <para><c>myUnionType.Deconstruct(out T1? val1, out T2? val2, out T3? val3, out T4? val4, out T5? val5, out T6? val6, out T7? val7, out T8? val8, out T9? val9, out T10? val10, out T11? val11, out T12? val12);</c></para>
+    /// </summary>
+    /// <param name="value1">Value of type <typeparamref name="T1"/> if <see cref="ValueIndex"/> is <see cref="Union12Index.Value1"/>, otherwise <c>default</c>.</param>
+    /// <param name="value2">Value of type <typeparamref name="T2"/> if <see cref="ValueIndex"/> is <see cref="Union12Index.Value2"/>, otherwise <c>default</c>.</param>
+    /// <param name="value3">Value of type <typeparamref name="T3"/> if <see cref="ValueIndex"/> is <see cref="Union12Index.Value3"/>, otherwise <c>default</c>.</param>
+    /// <param name="value4">Value of type <typeparamref name="T4"/> if <see cref="ValueIndex"/> is <see cref="Union12Index.Value4"/>, otherwise <c>default</c>.</param>
+    /// <param name="value5">Value of type <typeparamref name="T5"/> if <see cref="ValueIndex"/> is <see cref="Union12Index.Value5"/>, otherwise <c>default</c>.</param>
+    /// <param name="value6">Value of type <typeparamref name="T6"/> if <see cref="ValueIndex"/> is <see cref="Union12Index.Value6"/>, otherwise <c>default</c>.</param>
+    /// <param name="value7">Value of type <typeparamref name="T7"/> if <see cref="ValueIndex"/> is <see cref="Union12Index.Value7"/>, otherwise <c>default</c>.</param>
+    /// <param name="value8">Value of type <typeparamref name="T8"/> if <see cref="ValueIndex"/> is <see cref="Union12Index.Value8"/>, otherwise <c>default</c>.</param>
+    /// <param name="value9">Value of type <typeparamref name="T9"/> if <see cref="ValueIndex"/> is <see cref="Union12Index.Value9"/>, otherwise <c>default</c>.</param>
+    /// <param name="value10">Value of type <typeparamref name="T10"/> if <see cref="ValueIndex"/> is <see cref="Union12Index.Value10"/>, otherwise <c>default</c>.</param>
+    /// <param name="value11">Value of type <typeparamref name="T11"/> if <see cref="ValueIndex"/> is <see cref="Union12Index.Value11"/>, otherwise <c>default</c>.</param>
+    /// <param name="value12">Value of type <typeparamref name="T12"/> if <see cref="ValueIndex"/> is <see cref="Union12Index.Value12"/>, otherwise <c>default</c>.</param>
+    public void Deconstruct(out T1? value1, out T2? value2, out T3? value3, out T4? value4, out T5? value5, out T6? value6, out T7? value7, out T8? value8, out T9? value9, out T10? value10, out T11? value11, out T12? value12) {
+        value1 = Value1;
+        value2 = Value2;
+        value3 = Value3;
+        value4 = Value4;
+        value5 = Value5;
+        value6 = Value6;
+        value7 = Value7;
+        value8 = Value8;
+        value9 = Value9;
+        value10 = Value10;
+        value11 = Value11;
+        value12 = Value12;
+    }
 }
