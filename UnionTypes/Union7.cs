@@ -161,18 +161,66 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7>: IUnion, IEquatable<Uni
     
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue1 => ValueIndex == Union7Index.Value1;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue2 => ValueIndex == Union7Index.Value2;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue3 => ValueIndex == Union7Index.Value3;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue4 => ValueIndex == Union7Index.Value4;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue5 => ValueIndex == Union7Index.Value5;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue6 => ValueIndex == Union7Index.Value6;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue7 => ValueIndex == Union7Index.Value7;
+
+    /// <summary>
+    /// switch (statement)
+    /// </summary>
+    public void Switch(Action<T1?> case1, Action<T2?> case2, Action<T3?> case3, Action<T4?> case4, Action<T5?> case5, Action<T6?> case6, Action<T7?> case7) {
+        switch (ValueIndex) {
+            case Union7Index.Value1:
+                case1(Value1);
+                break;
+            case Union7Index.Value2:
+                case2(Value2);
+                break;
+            case Union7Index.Value3:
+                case3(Value3);
+                break;
+            case Union7Index.Value4:
+                case4(Value4);
+                break;
+            case Union7Index.Value5:
+                case5(Value5);
+                break;
+            case Union7Index.Value6:
+                case6(Value6);
+                break;
+            case Union7Index.Value7:
+                case7(Value7);
+                break;
+        }
+    }
+    
+    /// <summary>
+    /// switch (expression)
+    /// </summary>
+    public TResult Switch<TResult>(Func<T1?, TResult> case1, Func<T2?, TResult> case2, Func<T3?, TResult> case3, Func<T4?, TResult> case4, Func<T5?, TResult> case5, Func<T6?, TResult> case6, Func<T7?, TResult> case7) => ValueIndex switch {
+        Union7Index.Value1 => case1(Value1),
+        Union7Index.Value2 => case2(Value2),
+        Union7Index.Value3 => case3(Value3),
+        Union7Index.Value4 => case4(Value4),
+        Union7Index.Value5 => case5(Value5),
+        Union7Index.Value6 => case6(Value6),
+        Union7Index.Value7 => case7(Value7)
+    };
     
     /// <summary>
     /// Implicitly cast a value to this union type

@@ -33,7 +33,7 @@ public class UnionTypeGenerator(int typeCount) {
           [GeneratedCode("Aldaviva/UnionTypes", null)]
           public enum Union{{typeCount}}Index {
 
-          {{JoinEach(i => $"    /// <summary>Union type's value is of the union's {Nth(i)} type</summary>\r\n    Value{i} = {i}", ",\r\n\r\n")}}
+          {{JoinEach(i => $"    /// <summary>Union type's value is of the union's {Nth(i)} type</summary>\n    Value{i} = {i}", ",\n\n")}}
 
           }
 
@@ -50,7 +50,7 @@ public class UnionTypeGenerator(int typeCount) {
               /// </summary>
               public Union{{typeCount}}Index ValueIndex { get; }
               
-          {{JoinEach(i => $"    /// <summary>The value of the union type if <see cref=\"HasValue{i}\"/> is <c>true</c>, or equivalently if <see cref=\"ValueIndex\"/> is <see cref=\"Union{typeCount}Index.Value{i}\"/>; otherwise <c>default</c>.</summary>\r\n    public T{i}? Value{i} {{ get; }}", "\r\n\r\n")}}
+          {{JoinEach(i => $"    /// <summary>The value of the union type if <see cref=\"HasValue{i}\"/> is <c>true</c>, or equivalently if <see cref=\"ValueIndex\"/> is <see cref=\"Union{typeCount}Index.Value{i}\"/>; otherwise <c>default</c>.</summary>\n    public T{i}? Value{i} {{ get; }}", "\n\n")}}
 
           {{JoinEach(i =>
               $$"""
@@ -62,25 +62,41 @@ public class UnionTypeGenerator(int typeCount) {
                         Value{{i}} = value{{i}};
                         ValueIndex = Union{{typeCount}}Index.Value{{i}};
                     }
-                """, "\r\n\r\n")}}
+                """, "\n\n")}}
             
               /// <inheritdoc />
               public object? Value => ValueIndex switch {
-          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => Value{i}", ",\r\n")}}
+          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => Value{i}", ",\n")}}
               };
               
               /// <inheritdoc />
               public Type ValueType => ValueIndex switch {
-          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => typeof(T{i})", ",\r\n")}}
+          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => typeof(T{i})", ",\n")}}
               };
               
-          {{JoinEach(i => $"    /// <summary><c>true</c> if the value of the union type is <see cref=\"Value1\"/>, false otherwise</summary>\r\n    public bool HasValue{i} => ValueIndex == Union{typeCount}Index.Value{i};")}}
+          {{JoinEach(i => $"    /// <summary><c>true</c> if the value of the union type is <see cref=\"Value1\"/>, false otherwise</summary>\n    public bool HasValue{i} => ValueIndex == Union{typeCount}Index.Value{i};", "\n\n")}}
+          
+              /// <summary>
+              /// Execute an action depending on which type the value is
+              /// </summary>
+              public void Switch({{JoinEach(i => $"Action<T{i}?> case{i}", ", ")}}) {
+                  switch (ValueIndex) {
+          {{JoinEach(i => $"            case Union{typeCount}Index.Value{i}:\n                case{i}(Value{i});\n                break;")}}
+                  }
+              }
               
-          {{JoinEach(i => $"    /// <summary>\r\n    /// Implicitly cast a value to this union type\r\n    /// </summary>\r\n    /// <param name=\"value\">Value of the union type</param>\r\n    public static implicit operator Union<{GenericPlaceholders()}>(T{i}? value) => new(value);", "\r\n\r\n")}}
+              /// <summary>
+              /// Evaluate an expression depending on which type the value is
+              /// </summary>
+              public TResult Switch<TResult>({{JoinEach(i => $"Func<T{i}?, TResult> case{i}", ", ")}}) => ValueIndex switch {
+          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => case{i}(Value{i})", ",\n")}}
+              };
+              
+          {{JoinEach(i => $"    /// <summary>\n    /// Implicitly cast a value to this union type\n    /// </summary>\n    /// <param name=\"value\">Value of the union type</param>\n    public static implicit operator Union<{GenericPlaceholders()}>(T{i}? value) => new(value);", "\n\n")}}
               
               /// <inheritdoc cref="Object.ToString"/>
               public override string? ToString() => ValueIndex switch {
-          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => Value{i}?.ToString()", ",\r\n")}}
+          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => Value{i}?.ToString()", ",\n")}}
               };
               
               /// <inheritdoc />
@@ -95,9 +111,9 @@ public class UnionTypeGenerator(int typeCount) {
                     public bool Equals(T{{i}}? other) => ValueIndex switch {
                 {{JoinEach(j => $"        Union{typeCount}Index.Value{j} => " + (i == j
                     ? $"EqualityComparer<T{i}?>.Default.Equals(Value{i}, other)"
-                    : $"Value{j} is not null ? Value{j}.Equals(other) : other is null"), ",\r\n")}}
+                    : $"Value{j} is not null ? Value{j}.Equals(other) : other is null"), ",\n")}}
                     };
-                """, "\r\n\r\n")}}
+                """, "\n\n")}}
                     
               /// <inheritdoc />
               public override bool Equals(object? obj) => obj switch {
@@ -109,7 +125,7 @@ public class UnionTypeGenerator(int typeCount) {
               
               /// <inheritdoc />
               public override int GetHashCode() => ValueIndex switch {
-          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => EqualityComparer<T{i}?>.Default.GetHashCode(Value{i})", ",\r\n")}}
+          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => EqualityComparer<T{i}?>.Default.GetHashCode(Value{i})", ",\n")}}
               };
               
               /// <summary>
@@ -173,7 +189,7 @@ public class UnionTypeGenerator(int typeCount) {
                     public static bool operator !=(T{{i}}? left, Union<{{GenericPlaceholders()}}> right) {
                         return !right.Equals(left);
                     }
-                """, "\r\n\r\n")}}
+                """, "\n\n")}}
                 
               /// <summary>
               /// <para>Deconstruct union type into variables, one of which will be <see cref="Value"/> and the rest of which will be <c>default</c>.</para>
@@ -199,6 +215,6 @@ public class UnionTypeGenerator(int typeCount) {
 
     private string GenericPlaceholders() => JoinEach(i => $"T{i}", ", ");
 
-    private string JoinEach(Func<int, string> f, string joiner = "\r\n") => string.Join(joiner, Enumerable.Range(1, typeCount).Select(f));
+    private string JoinEach(Func<int, string> f, string joiner = "\n") => string.Join(joiner, Enumerable.Range(1, typeCount).Select(f));
 
 }

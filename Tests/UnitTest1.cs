@@ -90,11 +90,17 @@ public class UnitTest1 {
         };
         actual.Should().Be("a");
 
+        actual = a.Switch(s => s!, i => i.ToString());
+        actual.Should().Be("a");
+
         Union<string, int> b = 8;
         actual = b switch {
             { Value1: { } val } => val,
             { Value2: var val } => val.ToString()
         };
+        actual.Should().Be("8");
+
+        actual = b.Switch(s => s!, i => i.ToString());
         actual.Should().Be("8");
 
         Union<int, long> c = 17;
@@ -115,6 +121,9 @@ public class UnitTest1 {
             { Value: int val }  => "int " + val,
             { Value: long val } => "long " + val
         };
+        actual.Should().Be("long 88");
+
+        d.Switch(i => { actual = "int " + i; }, l => { actual = "long " + l; });
         actual.Should().Be("long 88");
     }
 

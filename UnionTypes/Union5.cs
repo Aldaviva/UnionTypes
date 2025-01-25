@@ -125,14 +125,52 @@ public readonly struct Union<T1, T2, T3, T4, T5>: IUnion, IEquatable<Union<T1, T
     
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue1 => ValueIndex == Union5Index.Value1;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue2 => ValueIndex == Union5Index.Value2;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue3 => ValueIndex == Union5Index.Value3;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue4 => ValueIndex == Union5Index.Value4;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue5 => ValueIndex == Union5Index.Value5;
+
+    /// <summary>
+    /// switch (statement)
+    /// </summary>
+    public void Switch(Action<T1?> case1, Action<T2?> case2, Action<T3?> case3, Action<T4?> case4, Action<T5?> case5) {
+        switch (ValueIndex) {
+            case Union5Index.Value1:
+                case1(Value1);
+                break;
+            case Union5Index.Value2:
+                case2(Value2);
+                break;
+            case Union5Index.Value3:
+                case3(Value3);
+                break;
+            case Union5Index.Value4:
+                case4(Value4);
+                break;
+            case Union5Index.Value5:
+                case5(Value5);
+                break;
+        }
+    }
+    
+    /// <summary>
+    /// switch (expression)
+    /// </summary>
+    public TResult Switch<TResult>(Func<T1?, TResult> case1, Func<T2?, TResult> case2, Func<T3?, TResult> case3, Func<T4?, TResult> case4, Func<T5?, TResult> case5) => ValueIndex switch {
+        Union5Index.Value1 => case1(Value1),
+        Union5Index.Value2 => case2(Value2),
+        Union5Index.Value3 => case3(Value3),
+        Union5Index.Value4 => case4(Value4),
+        Union5Index.Value5 => case5(Value5)
+    };
     
     /// <summary>
     /// Implicitly cast a value to this union type

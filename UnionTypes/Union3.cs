@@ -89,10 +89,38 @@ public readonly struct Union<T1, T2, T3>: IUnion, IEquatable<Union<T1, T2, T3>> 
     
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue1 => ValueIndex == Union3Index.Value1;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue2 => ValueIndex == Union3Index.Value2;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue3 => ValueIndex == Union3Index.Value3;
+
+    /// <summary>
+    /// switch (statement)
+    /// </summary>
+    public void Switch(Action<T1?> case1, Action<T2?> case2, Action<T3?> case3) {
+        switch (ValueIndex) {
+            case Union3Index.Value1:
+                case1(Value1);
+                break;
+            case Union3Index.Value2:
+                case2(Value2);
+                break;
+            case Union3Index.Value3:
+                case3(Value3);
+                break;
+        }
+    }
+    
+    /// <summary>
+    /// switch (expression)
+    /// </summary>
+    public TResult Switch<TResult>(Func<T1?, TResult> case1, Func<T2?, TResult> case2, Func<T3?, TResult> case3) => ValueIndex switch {
+        Union3Index.Value1 => case1(Value1),
+        Union3Index.Value2 => case2(Value2),
+        Union3Index.Value3 => case3(Value3)
+    };
     
     /// <summary>
     /// Implicitly cast a value to this union type

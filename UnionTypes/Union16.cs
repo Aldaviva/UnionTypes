@@ -323,36 +323,129 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue1 => ValueIndex == Union16Index.Value1;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue2 => ValueIndex == Union16Index.Value2;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue3 => ValueIndex == Union16Index.Value3;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue4 => ValueIndex == Union16Index.Value4;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue5 => ValueIndex == Union16Index.Value5;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue6 => ValueIndex == Union16Index.Value6;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue7 => ValueIndex == Union16Index.Value7;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue8 => ValueIndex == Union16Index.Value8;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue9 => ValueIndex == Union16Index.Value9;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue10 => ValueIndex == Union16Index.Value10;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue11 => ValueIndex == Union16Index.Value11;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue12 => ValueIndex == Union16Index.Value12;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue13 => ValueIndex == Union16Index.Value13;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue14 => ValueIndex == Union16Index.Value14;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue15 => ValueIndex == Union16Index.Value15;
+
     /// <summary><c>true</c> if the value of the union type is <see cref="Value1"/>, false otherwise</summary>
     public bool HasValue16 => ValueIndex == Union16Index.Value16;
+
+    /// <summary>
+    /// switch (statement)
+    /// </summary>
+    public void Switch(Action<T1?> case1, Action<T2?> case2, Action<T3?> case3, Action<T4?> case4, Action<T5?> case5, Action<T6?> case6, Action<T7?> case7, Action<T8?> case8, Action<T9?> case9, Action<T10?> case10, Action<T11?> case11, Action<T12?> case12, Action<T13?> case13, Action<T14?> case14, Action<T15?> case15, Action<T16?> case16) {
+        switch (ValueIndex) {
+            case Union16Index.Value1:
+                case1(Value1);
+                break;
+            case Union16Index.Value2:
+                case2(Value2);
+                break;
+            case Union16Index.Value3:
+                case3(Value3);
+                break;
+            case Union16Index.Value4:
+                case4(Value4);
+                break;
+            case Union16Index.Value5:
+                case5(Value5);
+                break;
+            case Union16Index.Value6:
+                case6(Value6);
+                break;
+            case Union16Index.Value7:
+                case7(Value7);
+                break;
+            case Union16Index.Value8:
+                case8(Value8);
+                break;
+            case Union16Index.Value9:
+                case9(Value9);
+                break;
+            case Union16Index.Value10:
+                case10(Value10);
+                break;
+            case Union16Index.Value11:
+                case11(Value11);
+                break;
+            case Union16Index.Value12:
+                case12(Value12);
+                break;
+            case Union16Index.Value13:
+                case13(Value13);
+                break;
+            case Union16Index.Value14:
+                case14(Value14);
+                break;
+            case Union16Index.Value15:
+                case15(Value15);
+                break;
+            case Union16Index.Value16:
+                case16(Value16);
+                break;
+        }
+    }
+    
+    /// <summary>
+    /// switch (expression)
+    /// </summary>
+    public TResult Switch<TResult>(Func<T1?, TResult> case1, Func<T2?, TResult> case2, Func<T3?, TResult> case3, Func<T4?, TResult> case4, Func<T5?, TResult> case5, Func<T6?, TResult> case6, Func<T7?, TResult> case7, Func<T8?, TResult> case8, Func<T9?, TResult> case9, Func<T10?, TResult> case10, Func<T11?, TResult> case11, Func<T12?, TResult> case12, Func<T13?, TResult> case13, Func<T14?, TResult> case14, Func<T15?, TResult> case15, Func<T16?, TResult> case16) => ValueIndex switch {
+        Union16Index.Value1 => case1(Value1),
+        Union16Index.Value2 => case2(Value2),
+        Union16Index.Value3 => case3(Value3),
+        Union16Index.Value4 => case4(Value4),
+        Union16Index.Value5 => case5(Value5),
+        Union16Index.Value6 => case6(Value6),
+        Union16Index.Value7 => case7(Value7),
+        Union16Index.Value8 => case8(Value8),
+        Union16Index.Value9 => case9(Value9),
+        Union16Index.Value10 => case10(Value10),
+        Union16Index.Value11 => case11(Value11),
+        Union16Index.Value12 => case12(Value12),
+        Union16Index.Value13 => case13(Value13),
+        Union16Index.Value14 => case14(Value14),
+        Union16Index.Value15 => case15(Value15),
+        Union16Index.Value16 => case16(Value16)
+    };
     
     /// <summary>
     /// Implicitly cast a value to this union type
