@@ -141,7 +141,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value1">The value of the union type</param>
-    public Union(T1? value1) {
+    public Union(T1 value1) {
         Value1 = value1;
         ValueIndex = Union16Index.Value1;
     }
@@ -150,7 +150,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value2">The value of the union type</param>
-    public Union(T2? value2) {
+    public Union(T2 value2) {
         Value2 = value2;
         ValueIndex = Union16Index.Value2;
     }
@@ -159,7 +159,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value3">The value of the union type</param>
-    public Union(T3? value3) {
+    public Union(T3 value3) {
         Value3 = value3;
         ValueIndex = Union16Index.Value3;
     }
@@ -168,7 +168,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value4">The value of the union type</param>
-    public Union(T4? value4) {
+    public Union(T4 value4) {
         Value4 = value4;
         ValueIndex = Union16Index.Value4;
     }
@@ -177,7 +177,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value5">The value of the union type</param>
-    public Union(T5? value5) {
+    public Union(T5 value5) {
         Value5 = value5;
         ValueIndex = Union16Index.Value5;
     }
@@ -186,7 +186,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value6">The value of the union type</param>
-    public Union(T6? value6) {
+    public Union(T6 value6) {
         Value6 = value6;
         ValueIndex = Union16Index.Value6;
     }
@@ -195,7 +195,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value7">The value of the union type</param>
-    public Union(T7? value7) {
+    public Union(T7 value7) {
         Value7 = value7;
         ValueIndex = Union16Index.Value7;
     }
@@ -204,7 +204,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value8">The value of the union type</param>
-    public Union(T8? value8) {
+    public Union(T8 value8) {
         Value8 = value8;
         ValueIndex = Union16Index.Value8;
     }
@@ -213,7 +213,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value9">The value of the union type</param>
-    public Union(T9? value9) {
+    public Union(T9 value9) {
         Value9 = value9;
         ValueIndex = Union16Index.Value9;
     }
@@ -222,7 +222,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value10">The value of the union type</param>
-    public Union(T10? value10) {
+    public Union(T10 value10) {
         Value10 = value10;
         ValueIndex = Union16Index.Value10;
     }
@@ -231,7 +231,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value11">The value of the union type</param>
-    public Union(T11? value11) {
+    public Union(T11 value11) {
         Value11 = value11;
         ValueIndex = Union16Index.Value11;
     }
@@ -240,7 +240,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value12">The value of the union type</param>
-    public Union(T12? value12) {
+    public Union(T12 value12) {
         Value12 = value12;
         ValueIndex = Union16Index.Value12;
     }
@@ -249,7 +249,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value13">The value of the union type</param>
-    public Union(T13? value13) {
+    public Union(T13 value13) {
         Value13 = value13;
         ValueIndex = Union16Index.Value13;
     }
@@ -258,7 +258,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value14">The value of the union type</param>
-    public Union(T14? value14) {
+    public Union(T14 value14) {
         Value14 = value14;
         ValueIndex = Union16Index.Value14;
     }
@@ -267,7 +267,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value15">The value of the union type</param>
-    public Union(T15? value15) {
+    public Union(T15 value15) {
         Value15 = value15;
         ValueIndex = Union16Index.Value15;
     }
@@ -276,7 +276,7 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value16">The value of the union type</param>
-    public Union(T16? value16) {
+    public Union(T16 value16) {
         Value16 = value16;
         ValueIndex = Union16Index.Value16;
     }
@@ -370,217 +370,217 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     public bool HasValue16 => ValueIndex == Union16Index.Value16;
 
     /// <summary>
-    /// switch (statement)
+    /// Execute an action depending on which type the value is
     /// </summary>
-    public void Switch(Action<T1?> case1, Action<T2?> case2, Action<T3?> case3, Action<T4?> case4, Action<T5?> case5, Action<T6?> case6, Action<T7?> case7, Action<T8?> case8, Action<T9?> case9, Action<T10?> case10, Action<T11?> case11, Action<T12?> case12, Action<T13?> case13, Action<T14?> case14, Action<T15?> case15, Action<T16?> case16) {
+    public void Switch(Action<T1> case1, Action<T2> case2, Action<T3> case3, Action<T4> case4, Action<T5> case5, Action<T6> case6, Action<T7> case7, Action<T8> case8, Action<T9> case9, Action<T10> case10, Action<T11> case11, Action<T12> case12, Action<T13> case13, Action<T14> case14, Action<T15> case15, Action<T16> case16) {
         switch (ValueIndex) {
             case Union16Index.Value1:
-                case1(Value1);
+                case1(Value1!);
                 break;
             case Union16Index.Value2:
-                case2(Value2);
+                case2(Value2!);
                 break;
             case Union16Index.Value3:
-                case3(Value3);
+                case3(Value3!);
                 break;
             case Union16Index.Value4:
-                case4(Value4);
+                case4(Value4!);
                 break;
             case Union16Index.Value5:
-                case5(Value5);
+                case5(Value5!);
                 break;
             case Union16Index.Value6:
-                case6(Value6);
+                case6(Value6!);
                 break;
             case Union16Index.Value7:
-                case7(Value7);
+                case7(Value7!);
                 break;
             case Union16Index.Value8:
-                case8(Value8);
+                case8(Value8!);
                 break;
             case Union16Index.Value9:
-                case9(Value9);
+                case9(Value9!);
                 break;
             case Union16Index.Value10:
-                case10(Value10);
+                case10(Value10!);
                 break;
             case Union16Index.Value11:
-                case11(Value11);
+                case11(Value11!);
                 break;
             case Union16Index.Value12:
-                case12(Value12);
+                case12(Value12!);
                 break;
             case Union16Index.Value13:
-                case13(Value13);
+                case13(Value13!);
                 break;
             case Union16Index.Value14:
-                case14(Value14);
+                case14(Value14!);
                 break;
             case Union16Index.Value15:
-                case15(Value15);
+                case15(Value15!);
                 break;
             case Union16Index.Value16:
-                case16(Value16);
+                case16(Value16!);
                 break;
         }
     }
     
     /// <summary>
-    /// switch (expression)
+    /// Evaluate an expression depending on which type the value is
     /// </summary>
-    public TResult Switch<TResult>(Func<T1?, TResult> case1, Func<T2?, TResult> case2, Func<T3?, TResult> case3, Func<T4?, TResult> case4, Func<T5?, TResult> case5, Func<T6?, TResult> case6, Func<T7?, TResult> case7, Func<T8?, TResult> case8, Func<T9?, TResult> case9, Func<T10?, TResult> case10, Func<T11?, TResult> case11, Func<T12?, TResult> case12, Func<T13?, TResult> case13, Func<T14?, TResult> case14, Func<T15?, TResult> case15, Func<T16?, TResult> case16) => ValueIndex switch {
-        Union16Index.Value1 => case1(Value1),
-        Union16Index.Value2 => case2(Value2),
-        Union16Index.Value3 => case3(Value3),
-        Union16Index.Value4 => case4(Value4),
-        Union16Index.Value5 => case5(Value5),
-        Union16Index.Value6 => case6(Value6),
-        Union16Index.Value7 => case7(Value7),
-        Union16Index.Value8 => case8(Value8),
-        Union16Index.Value9 => case9(Value9),
-        Union16Index.Value10 => case10(Value10),
-        Union16Index.Value11 => case11(Value11),
-        Union16Index.Value12 => case12(Value12),
-        Union16Index.Value13 => case13(Value13),
-        Union16Index.Value14 => case14(Value14),
-        Union16Index.Value15 => case15(Value15),
-        Union16Index.Value16 => case16(Value16)
+    public TResult Switch<TResult>(Func<T1, TResult> case1, Func<T2, TResult> case2, Func<T3, TResult> case3, Func<T4, TResult> case4, Func<T5, TResult> case5, Func<T6, TResult> case6, Func<T7, TResult> case7, Func<T8, TResult> case8, Func<T9, TResult> case9, Func<T10, TResult> case10, Func<T11, TResult> case11, Func<T12, TResult> case12, Func<T13, TResult> case13, Func<T14, TResult> case14, Func<T15, TResult> case15, Func<T16, TResult> case16) => ValueIndex switch {
+        Union16Index.Value1 => case1(Value1!),
+        Union16Index.Value2 => case2(Value2!),
+        Union16Index.Value3 => case3(Value3!),
+        Union16Index.Value4 => case4(Value4!),
+        Union16Index.Value5 => case5(Value5!),
+        Union16Index.Value6 => case6(Value6!),
+        Union16Index.Value7 => case7(Value7!),
+        Union16Index.Value8 => case8(Value8!),
+        Union16Index.Value9 => case9(Value9!),
+        Union16Index.Value10 => case10(Value10!),
+        Union16Index.Value11 => case11(Value11!),
+        Union16Index.Value12 => case12(Value12!),
+        Union16Index.Value13 => case13(Value13!),
+        Union16Index.Value14 => case14(Value14!),
+        Union16Index.Value15 => case15(Value15!),
+        Union16Index.Value16 => case16(Value16!)
     };
     
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T1? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T1 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T2? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T2 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T3? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T3 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T4? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T4 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T5? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T5 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T6? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T6 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T7? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T7 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T8? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T8 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T9? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T9 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T10? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T10 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T11? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T11 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T12? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T12 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T13? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T13 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T14? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T14 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T15? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T15 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T16? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(T16 value) => new(value);
     
     /// <inheritdoc cref="Object.ToString"/>
-    public override string? ToString() => ValueIndex switch {
-        Union16Index.Value1 => Value1?.ToString(),
-        Union16Index.Value2 => Value2?.ToString(),
-        Union16Index.Value3 => Value3?.ToString(),
-        Union16Index.Value4 => Value4?.ToString(),
-        Union16Index.Value5 => Value5?.ToString(),
-        Union16Index.Value6 => Value6?.ToString(),
-        Union16Index.Value7 => Value7?.ToString(),
-        Union16Index.Value8 => Value8?.ToString(),
-        Union16Index.Value9 => Value9?.ToString(),
-        Union16Index.Value10 => Value10?.ToString(),
-        Union16Index.Value11 => Value11?.ToString(),
-        Union16Index.Value12 => Value12?.ToString(),
-        Union16Index.Value13 => Value13?.ToString(),
-        Union16Index.Value14 => Value14?.ToString(),
-        Union16Index.Value15 => Value15?.ToString(),
-        Union16Index.Value16 => Value16?.ToString()
+    public override string ToString() => ValueIndex switch {
+        Union16Index.Value1 => Value1!.ToString(),
+        Union16Index.Value2 => Value2!.ToString(),
+        Union16Index.Value3 => Value3!.ToString(),
+        Union16Index.Value4 => Value4!.ToString(),
+        Union16Index.Value5 => Value5!.ToString(),
+        Union16Index.Value6 => Value6!.ToString(),
+        Union16Index.Value7 => Value7!.ToString(),
+        Union16Index.Value8 => Value8!.ToString(),
+        Union16Index.Value9 => Value9!.ToString(),
+        Union16Index.Value10 => Value10!.ToString(),
+        Union16Index.Value11 => Value11!.ToString(),
+        Union16Index.Value12 => Value12!.ToString(),
+        Union16Index.Value13 => Value13!.ToString(),
+        Union16Index.Value14 => Value14!.ToString(),
+        Union16Index.Value15 => Value15!.ToString(),
+        Union16Index.Value16 => Value16!.ToString()
     };
     
     /// <inheritdoc />
     public bool Equals(Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> other) => ValueIndex switch {
-        Union16Index.Value1 when other.ValueIndex is Union16Index.Value1 => EqualityComparer<T1?>.Default.Equals(Value1, other.Value1),
-        Union16Index.Value2 when other.ValueIndex is Union16Index.Value2 => EqualityComparer<T2?>.Default.Equals(Value2, other.Value2),
-        Union16Index.Value3 when other.ValueIndex is Union16Index.Value3 => EqualityComparer<T3?>.Default.Equals(Value3, other.Value3),
-        Union16Index.Value4 when other.ValueIndex is Union16Index.Value4 => EqualityComparer<T4?>.Default.Equals(Value4, other.Value4),
-        Union16Index.Value5 when other.ValueIndex is Union16Index.Value5 => EqualityComparer<T5?>.Default.Equals(Value5, other.Value5),
-        Union16Index.Value6 when other.ValueIndex is Union16Index.Value6 => EqualityComparer<T6?>.Default.Equals(Value6, other.Value6),
-        Union16Index.Value7 when other.ValueIndex is Union16Index.Value7 => EqualityComparer<T7?>.Default.Equals(Value7, other.Value7),
-        Union16Index.Value8 when other.ValueIndex is Union16Index.Value8 => EqualityComparer<T8?>.Default.Equals(Value8, other.Value8),
-        Union16Index.Value9 when other.ValueIndex is Union16Index.Value9 => EqualityComparer<T9?>.Default.Equals(Value9, other.Value9),
-        Union16Index.Value10 when other.ValueIndex is Union16Index.Value10 => EqualityComparer<T10?>.Default.Equals(Value10, other.Value10),
-        Union16Index.Value11 when other.ValueIndex is Union16Index.Value11 => EqualityComparer<T11?>.Default.Equals(Value11, other.Value11),
-        Union16Index.Value12 when other.ValueIndex is Union16Index.Value12 => EqualityComparer<T12?>.Default.Equals(Value12, other.Value12),
-        Union16Index.Value13 when other.ValueIndex is Union16Index.Value13 => EqualityComparer<T13?>.Default.Equals(Value13, other.Value13),
-        Union16Index.Value14 when other.ValueIndex is Union16Index.Value14 => EqualityComparer<T14?>.Default.Equals(Value14, other.Value14),
-        Union16Index.Value15 when other.ValueIndex is Union16Index.Value15 => EqualityComparer<T15?>.Default.Equals(Value15, other.Value15),
-        Union16Index.Value16 when other.ValueIndex is Union16Index.Value16 => EqualityComparer<T16?>.Default.Equals(Value16, other.Value16),
+        Union16Index.Value1 when other.ValueIndex is Union16Index.Value1 => EqualityComparer<T1>.Default.Equals(Value1!, other.Value1!),
+        Union16Index.Value2 when other.ValueIndex is Union16Index.Value2 => EqualityComparer<T2>.Default.Equals(Value2!, other.Value2!),
+        Union16Index.Value3 when other.ValueIndex is Union16Index.Value3 => EqualityComparer<T3>.Default.Equals(Value3!, other.Value3!),
+        Union16Index.Value4 when other.ValueIndex is Union16Index.Value4 => EqualityComparer<T4>.Default.Equals(Value4!, other.Value4!),
+        Union16Index.Value5 when other.ValueIndex is Union16Index.Value5 => EqualityComparer<T5>.Default.Equals(Value5!, other.Value5!),
+        Union16Index.Value6 when other.ValueIndex is Union16Index.Value6 => EqualityComparer<T6>.Default.Equals(Value6!, other.Value6!),
+        Union16Index.Value7 when other.ValueIndex is Union16Index.Value7 => EqualityComparer<T7>.Default.Equals(Value7!, other.Value7!),
+        Union16Index.Value8 when other.ValueIndex is Union16Index.Value8 => EqualityComparer<T8>.Default.Equals(Value8!, other.Value8!),
+        Union16Index.Value9 when other.ValueIndex is Union16Index.Value9 => EqualityComparer<T9>.Default.Equals(Value9!, other.Value9!),
+        Union16Index.Value10 when other.ValueIndex is Union16Index.Value10 => EqualityComparer<T10>.Default.Equals(Value10!, other.Value10!),
+        Union16Index.Value11 when other.ValueIndex is Union16Index.Value11 => EqualityComparer<T11>.Default.Equals(Value11!, other.Value11!),
+        Union16Index.Value12 when other.ValueIndex is Union16Index.Value12 => EqualityComparer<T12>.Default.Equals(Value12!, other.Value12!),
+        Union16Index.Value13 when other.ValueIndex is Union16Index.Value13 => EqualityComparer<T13>.Default.Equals(Value13!, other.Value13!),
+        Union16Index.Value14 when other.ValueIndex is Union16Index.Value14 => EqualityComparer<T14>.Default.Equals(Value14!, other.Value14!),
+        Union16Index.Value15 when other.ValueIndex is Union16Index.Value15 => EqualityComparer<T15>.Default.Equals(Value15!, other.Value15!),
+        Union16Index.Value16 when other.ValueIndex is Union16Index.Value16 => EqualityComparer<T16>.Default.Equals(Value16!, other.Value16!),
         _ => Value?.Equals(other.Value) ?? other.Value is null
     };
     
@@ -929,22 +929,22 @@ public readonly struct Union<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, 
     
     /// <inheritdoc />
     public override int GetHashCode() => ValueIndex switch {
-        Union16Index.Value1 => EqualityComparer<T1?>.Default.GetHashCode(Value1),
-        Union16Index.Value2 => EqualityComparer<T2?>.Default.GetHashCode(Value2),
-        Union16Index.Value3 => EqualityComparer<T3?>.Default.GetHashCode(Value3),
-        Union16Index.Value4 => EqualityComparer<T4?>.Default.GetHashCode(Value4),
-        Union16Index.Value5 => EqualityComparer<T5?>.Default.GetHashCode(Value5),
-        Union16Index.Value6 => EqualityComparer<T6?>.Default.GetHashCode(Value6),
-        Union16Index.Value7 => EqualityComparer<T7?>.Default.GetHashCode(Value7),
-        Union16Index.Value8 => EqualityComparer<T8?>.Default.GetHashCode(Value8),
-        Union16Index.Value9 => EqualityComparer<T9?>.Default.GetHashCode(Value9),
-        Union16Index.Value10 => EqualityComparer<T10?>.Default.GetHashCode(Value10),
-        Union16Index.Value11 => EqualityComparer<T11?>.Default.GetHashCode(Value11),
-        Union16Index.Value12 => EqualityComparer<T12?>.Default.GetHashCode(Value12),
-        Union16Index.Value13 => EqualityComparer<T13?>.Default.GetHashCode(Value13),
-        Union16Index.Value14 => EqualityComparer<T14?>.Default.GetHashCode(Value14),
-        Union16Index.Value15 => EqualityComparer<T15?>.Default.GetHashCode(Value15),
-        Union16Index.Value16 => EqualityComparer<T16?>.Default.GetHashCode(Value16)
+        Union16Index.Value1 => EqualityComparer<T1>.Default.GetHashCode(Value1!),
+        Union16Index.Value2 => EqualityComparer<T2>.Default.GetHashCode(Value2!),
+        Union16Index.Value3 => EqualityComparer<T3>.Default.GetHashCode(Value3!),
+        Union16Index.Value4 => EqualityComparer<T4>.Default.GetHashCode(Value4!),
+        Union16Index.Value5 => EqualityComparer<T5>.Default.GetHashCode(Value5!),
+        Union16Index.Value6 => EqualityComparer<T6>.Default.GetHashCode(Value6!),
+        Union16Index.Value7 => EqualityComparer<T7>.Default.GetHashCode(Value7!),
+        Union16Index.Value8 => EqualityComparer<T8>.Default.GetHashCode(Value8!),
+        Union16Index.Value9 => EqualityComparer<T9>.Default.GetHashCode(Value9!),
+        Union16Index.Value10 => EqualityComparer<T10>.Default.GetHashCode(Value10!),
+        Union16Index.Value11 => EqualityComparer<T11>.Default.GetHashCode(Value11!),
+        Union16Index.Value12 => EqualityComparer<T12>.Default.GetHashCode(Value12!),
+        Union16Index.Value13 => EqualityComparer<T13>.Default.GetHashCode(Value13!),
+        Union16Index.Value14 => EqualityComparer<T14>.Default.GetHashCode(Value14!),
+        Union16Index.Value15 => EqualityComparer<T15>.Default.GetHashCode(Value15!),
+        Union16Index.Value16 => EqualityComparer<T16>.Default.GetHashCode(Value16!)
     };
     
     /// <summary>

@@ -50,7 +50,7 @@ public readonly struct Union<T1, T2, T3>: IUnion, IEquatable<Union<T1, T2, T3>> 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value1">The value of the union type</param>
-    public Union(T1? value1) {
+    public Union(T1 value1) {
         Value1 = value1;
         ValueIndex = Union3Index.Value1;
     }
@@ -59,7 +59,7 @@ public readonly struct Union<T1, T2, T3>: IUnion, IEquatable<Union<T1, T2, T3>> 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value2">The value of the union type</param>
-    public Union(T2? value2) {
+    public Union(T2 value2) {
         Value2 = value2;
         ValueIndex = Union3Index.Value2;
     }
@@ -68,7 +68,7 @@ public readonly struct Union<T1, T2, T3>: IUnion, IEquatable<Union<T1, T2, T3>> 
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value3">The value of the union type</param>
-    public Union(T3? value3) {
+    public Union(T3 value3) {
         Value3 = value3;
         ValueIndex = Union3Index.Value3;
     }
@@ -97,61 +97,61 @@ public readonly struct Union<T1, T2, T3>: IUnion, IEquatable<Union<T1, T2, T3>> 
     public bool HasValue3 => ValueIndex == Union3Index.Value3;
 
     /// <summary>
-    /// switch (statement)
+    /// Execute an action depending on which type the value is
     /// </summary>
-    public void Switch(Action<T1?> case1, Action<T2?> case2, Action<T3?> case3) {
+    public void Switch(Action<T1> case1, Action<T2> case2, Action<T3> case3) {
         switch (ValueIndex) {
             case Union3Index.Value1:
-                case1(Value1);
+                case1(Value1!);
                 break;
             case Union3Index.Value2:
-                case2(Value2);
+                case2(Value2!);
                 break;
             case Union3Index.Value3:
-                case3(Value3);
+                case3(Value3!);
                 break;
         }
     }
     
     /// <summary>
-    /// switch (expression)
+    /// Evaluate an expression depending on which type the value is
     /// </summary>
-    public TResult Switch<TResult>(Func<T1?, TResult> case1, Func<T2?, TResult> case2, Func<T3?, TResult> case3) => ValueIndex switch {
-        Union3Index.Value1 => case1(Value1),
-        Union3Index.Value2 => case2(Value2),
-        Union3Index.Value3 => case3(Value3)
+    public TResult Switch<TResult>(Func<T1, TResult> case1, Func<T2, TResult> case2, Func<T3, TResult> case3) => ValueIndex switch {
+        Union3Index.Value1 => case1(Value1!),
+        Union3Index.Value2 => case2(Value2!),
+        Union3Index.Value3 => case3(Value3!)
     };
     
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3>(T1? value) => new(value);
+    public static implicit operator Union<T1, T2, T3>(T1 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3>(T2? value) => new(value);
+    public static implicit operator Union<T1, T2, T3>(T2 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3>(T3? value) => new(value);
+    public static implicit operator Union<T1, T2, T3>(T3 value) => new(value);
     
     /// <inheritdoc cref="Object.ToString"/>
-    public override string? ToString() => ValueIndex switch {
-        Union3Index.Value1 => Value1?.ToString(),
-        Union3Index.Value2 => Value2?.ToString(),
-        Union3Index.Value3 => Value3?.ToString()
+    public override string ToString() => ValueIndex switch {
+        Union3Index.Value1 => Value1!.ToString(),
+        Union3Index.Value2 => Value2!.ToString(),
+        Union3Index.Value3 => Value3!.ToString()
     };
     
     /// <inheritdoc />
     public bool Equals(Union<T1, T2, T3> other) => ValueIndex switch {
-        Union3Index.Value1 when other.ValueIndex is Union3Index.Value1 => EqualityComparer<T1?>.Default.Equals(Value1, other.Value1),
-        Union3Index.Value2 when other.ValueIndex is Union3Index.Value2 => EqualityComparer<T2?>.Default.Equals(Value2, other.Value2),
-        Union3Index.Value3 when other.ValueIndex is Union3Index.Value3 => EqualityComparer<T3?>.Default.Equals(Value3, other.Value3),
+        Union3Index.Value1 when other.ValueIndex is Union3Index.Value1 => EqualityComparer<T1>.Default.Equals(Value1!, other.Value1!),
+        Union3Index.Value2 when other.ValueIndex is Union3Index.Value2 => EqualityComparer<T2>.Default.Equals(Value2!, other.Value2!),
+        Union3Index.Value3 when other.ValueIndex is Union3Index.Value3 => EqualityComparer<T3>.Default.Equals(Value3!, other.Value3!),
         _ => Value?.Equals(other.Value) ?? other.Value is null
     };
     
@@ -188,9 +188,9 @@ public readonly struct Union<T1, T2, T3>: IUnion, IEquatable<Union<T1, T2, T3>> 
     
     /// <inheritdoc />
     public override int GetHashCode() => ValueIndex switch {
-        Union3Index.Value1 => EqualityComparer<T1?>.Default.GetHashCode(Value1),
-        Union3Index.Value2 => EqualityComparer<T2?>.Default.GetHashCode(Value2),
-        Union3Index.Value3 => EqualityComparer<T3?>.Default.GetHashCode(Value3)
+        Union3Index.Value1 => EqualityComparer<T1>.Default.GetHashCode(Value1!),
+        Union3Index.Value2 => EqualityComparer<T2>.Default.GetHashCode(Value2!),
+        Union3Index.Value3 => EqualityComparer<T3>.Default.GetHashCode(Value3!)
     };
     
     /// <summary>

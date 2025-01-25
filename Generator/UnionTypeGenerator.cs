@@ -58,7 +58,7 @@ public class UnionTypeGenerator(int typeCount) {
                     /// Create an instance of the union type with the given value.
                     /// </summary>
                     /// <param name="value{{i}}">The value of the union type</param>
-                    public Union(T{{i}}? value{{i}}) {
+                    public Union(T{{i}} value{{i}}) {
                         Value{{i}} = value{{i}};
                         ValueIndex = Union{{typeCount}}Index.Value{{i}};
                     }
@@ -79,29 +79,29 @@ public class UnionTypeGenerator(int typeCount) {
               /// <summary>
               /// Execute an action depending on which type the value is
               /// </summary>
-              public void Switch({{JoinEach(i => $"Action<T{i}?> case{i}", ", ")}}) {
+              public void Switch({{JoinEach(i => $"Action<T{i}> case{i}", ", ")}}) {
                   switch (ValueIndex) {
-          {{JoinEach(i => $"            case Union{typeCount}Index.Value{i}:\n                case{i}(Value{i});\n                break;")}}
+          {{JoinEach(i => $"            case Union{typeCount}Index.Value{i}:\n                case{i}(Value{i}!);\n                break;")}}
                   }
               }
               
               /// <summary>
               /// Evaluate an expression depending on which type the value is
               /// </summary>
-              public TResult Switch<TResult>({{JoinEach(i => $"Func<T{i}?, TResult> case{i}", ", ")}}) => ValueIndex switch {
-          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => case{i}(Value{i})", ",\n")}}
+              public TResult Switch<TResult>({{JoinEach(i => $"Func<T{i}, TResult> case{i}", ", ")}}) => ValueIndex switch {
+          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => case{i}(Value{i}!)", ",\n")}}
               };
               
-          {{JoinEach(i => $"    /// <summary>\n    /// Implicitly cast a value to this union type\n    /// </summary>\n    /// <param name=\"value\">Value of the union type</param>\n    public static implicit operator Union<{GenericPlaceholders()}>(T{i}? value) => new(value);", "\n\n")}}
+          {{JoinEach(i => $"    /// <summary>\n    /// Implicitly cast a value to this union type\n    /// </summary>\n    /// <param name=\"value\">Value of the union type</param>\n    public static implicit operator Union<{GenericPlaceholders()}>(T{i} value) => new(value);", "\n\n")}}
               
               /// <inheritdoc cref="Object.ToString"/>
-              public override string? ToString() => ValueIndex switch {
-          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => Value{i}?.ToString()", ",\n")}}
+              public override string ToString() => ValueIndex switch {
+          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => Value{i}!.ToString()", ",\n")}}
               };
               
               /// <inheritdoc />
               public bool Equals(Union<{{GenericPlaceholders()}}> other) => ValueIndex switch {
-          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} when other.ValueIndex is Union{typeCount}Index.Value{i} => EqualityComparer<T{i}?>.Default.Equals(Value{i}, other.Value{i}),")}}
+          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} when other.ValueIndex is Union{typeCount}Index.Value{i} => EqualityComparer<T{i}>.Default.Equals(Value{i}!, other.Value{i}!),")}}
                   _ => Value?.Equals(other.Value) ?? other.Value is null
               };
               
@@ -125,7 +125,7 @@ public class UnionTypeGenerator(int typeCount) {
               
               /// <inheritdoc />
               public override int GetHashCode() => ValueIndex switch {
-          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => EqualityComparer<T{i}?>.Default.GetHashCode(Value{i})", ",\n")}}
+          {{JoinEach(i => $"        Union{typeCount}Index.Value{i} => EqualityComparer<T{i}>.Default.GetHashCode(Value{i}!)", ",\n")}}
               };
               
               /// <summary>

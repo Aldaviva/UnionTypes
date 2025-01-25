@@ -15,7 +15,7 @@ Once defined, you can use instances of this union in a type safe way. For exampl
 
 [This package is available on NuGet Gallery.](https://www.nuget.org/packages/UnionTypes/)
 
-It can run in .NET Standard 2.0 runtimes and later, as well as .NET Framework 4.5.2 and later.
+It can run in [.NET Standard 2.0](https://learn.microsoft.com/en-us/dotnet/standard/net-standard?tabs=net-standard-2-0#select-net-standard-version) runtimes and later, as well as .NET Framework 4.5.2 and later.
 
 ```sh
 dotnet add package UnionTypes
@@ -44,8 +44,9 @@ IList<XPathSegment> path = ["xConfiguration", "Network", 1, "DNS", "Server", 3, 
 
 ### Reading
 
-For each of the union's constituent types, you can test if the value of an instance of the union type is of that constituent type with the `HasValue1` and other properties, or `ValueIndex`. You can get the strongly-typed value with the related `Value1` and other properties.
+For each of the union's constituent types, you can test if the value of an instance of the union type is of that constituent type with the `HasValue1` and other properties, or `ValueIndex`. You can get the strongly-typed value with the related `Value1` and other properties. Alternatively, you can use `Switch` methods for more type safety.
 
+#### `HasValueN`
 ```cs
 if (path[0].HasValue1) {
     string message = $"First item is the string {path[0].Value1}"; // "First item is xConfiguration"
@@ -58,6 +59,7 @@ if (path[0] is { HasValue1: true, Value1: var firstItem }) {
 }
 ```
 
+#### `ValueIndex`
 ```cs
 if (path[0].ValueIndex == Union2Index.Value1) {
     string message = $"First item is the string {path[0].Value1}"; // "First item is xConfiguration"
@@ -67,9 +69,28 @@ if (path[0].ValueIndex == Union2Index.Value1) {
 ```cs
 string message = path[0] switch {
     { ValueIndex: Union2Index.Value1, Value1: var first } => $"First item is string {first?.Trim()}",
-    { ValueIndex: Union2Index.Value2, Value2: var first } => $"First item is int {Math.Abs(first)}",
+    { ValueIndex: Union2Index.Value2, Value2: var first } => $"First item is int {Math.Abs(first)}"
 };
 ```
+
+#### `Switch`
+Expression style:
+```cs
+string message = path[0].Switch(
+    case1: first => $"First item is string {first.Trim()}",
+    case2: first => $"First item is int {Math.Abs(first)}"
+);
+```
+
+Imperative statement style:
+```cs
+string message = "";
+path[0].Switch(
+    case1: first => { message = $"First item is string {first.Trim()}"; },
+    case2: first => { message = $"First item is int {Math.Abs(first)}"; }
+);
+```
+
 
 If you don't need the value to be strongly typed, you can get it as an `object` using the `Value` property.
 

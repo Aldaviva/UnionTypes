@@ -132,11 +132,11 @@ public class UnitTest1 {
         Union<string, int> a = "a";
         (string? actual1, int actual2) = a;
         actual1.Should().Be("a");
-        actual2.Should().Be(default);
+        actual2.Should().Be(0);
 
         a.Deconstruct(out actual1, out actual2);
         actual1.Should().Be("a");
-        actual2.Should().Be(default);
+        actual2.Should().Be(0);
     }
 
     [Fact]
@@ -145,7 +145,25 @@ public class UnitTest1 {
         allInts.HasValue1.Should().BeTrue();
         allInts.ValueIndex.Should().Be(Union2Index.Value1);
         allInts.Value1.Should().Be(1);
-        allInts.Value2.Should().Be(default);
+        allInts.Value2.Should().Be(0);
+    }
+
+    [Fact]
+    public void NullReferenceTypes() {
+        var a = new Union<string?, int>(null);
+        a.HasValue1.Should().BeTrue();
+        a.Value1.Should().BeNull();
+        a.ValueIndex.Should().Be(Union2Index.Value1);
+        a.ValueType.Should().Be(typeof(string));
+    }
+
+    [Fact]
+    public void NullValueTypes() {
+        var a = new Union<string, int?>((int?) null);
+        a.HasValue2.Should().BeTrue();
+        a.Value2.Should().BeNull();
+        a.ValueIndex.Should().Be(Union2Index.Value2);
+        a.ValueType.Should().Be(typeof(int?));
     }
 
 }

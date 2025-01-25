@@ -64,7 +64,7 @@ public readonly struct Union<T1, T2, T3, T4, T5>: IUnion, IEquatable<Union<T1, T
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value1">The value of the union type</param>
-    public Union(T1? value1) {
+    public Union(T1 value1) {
         Value1 = value1;
         ValueIndex = Union5Index.Value1;
     }
@@ -73,7 +73,7 @@ public readonly struct Union<T1, T2, T3, T4, T5>: IUnion, IEquatable<Union<T1, T
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value2">The value of the union type</param>
-    public Union(T2? value2) {
+    public Union(T2 value2) {
         Value2 = value2;
         ValueIndex = Union5Index.Value2;
     }
@@ -82,7 +82,7 @@ public readonly struct Union<T1, T2, T3, T4, T5>: IUnion, IEquatable<Union<T1, T
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value3">The value of the union type</param>
-    public Union(T3? value3) {
+    public Union(T3 value3) {
         Value3 = value3;
         ValueIndex = Union5Index.Value3;
     }
@@ -91,7 +91,7 @@ public readonly struct Union<T1, T2, T3, T4, T5>: IUnion, IEquatable<Union<T1, T
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value4">The value of the union type</param>
-    public Union(T4? value4) {
+    public Union(T4 value4) {
         Value4 = value4;
         ValueIndex = Union5Index.Value4;
     }
@@ -100,7 +100,7 @@ public readonly struct Union<T1, T2, T3, T4, T5>: IUnion, IEquatable<Union<T1, T
     /// Create an instance of the union type with the given value.
     /// </summary>
     /// <param name="value5">The value of the union type</param>
-    public Union(T5? value5) {
+    public Union(T5 value5) {
         Value5 = value5;
         ValueIndex = Union5Index.Value5;
     }
@@ -139,85 +139,85 @@ public readonly struct Union<T1, T2, T3, T4, T5>: IUnion, IEquatable<Union<T1, T
     public bool HasValue5 => ValueIndex == Union5Index.Value5;
 
     /// <summary>
-    /// switch (statement)
+    /// Execute an action depending on which type the value is
     /// </summary>
-    public void Switch(Action<T1?> case1, Action<T2?> case2, Action<T3?> case3, Action<T4?> case4, Action<T5?> case5) {
+    public void Switch(Action<T1> case1, Action<T2> case2, Action<T3> case3, Action<T4> case4, Action<T5> case5) {
         switch (ValueIndex) {
             case Union5Index.Value1:
-                case1(Value1);
+                case1(Value1!);
                 break;
             case Union5Index.Value2:
-                case2(Value2);
+                case2(Value2!);
                 break;
             case Union5Index.Value3:
-                case3(Value3);
+                case3(Value3!);
                 break;
             case Union5Index.Value4:
-                case4(Value4);
+                case4(Value4!);
                 break;
             case Union5Index.Value5:
-                case5(Value5);
+                case5(Value5!);
                 break;
         }
     }
     
     /// <summary>
-    /// switch (expression)
+    /// Evaluate an expression depending on which type the value is
     /// </summary>
-    public TResult Switch<TResult>(Func<T1?, TResult> case1, Func<T2?, TResult> case2, Func<T3?, TResult> case3, Func<T4?, TResult> case4, Func<T5?, TResult> case5) => ValueIndex switch {
-        Union5Index.Value1 => case1(Value1),
-        Union5Index.Value2 => case2(Value2),
-        Union5Index.Value3 => case3(Value3),
-        Union5Index.Value4 => case4(Value4),
-        Union5Index.Value5 => case5(Value5)
+    public TResult Switch<TResult>(Func<T1, TResult> case1, Func<T2, TResult> case2, Func<T3, TResult> case3, Func<T4, TResult> case4, Func<T5, TResult> case5) => ValueIndex switch {
+        Union5Index.Value1 => case1(Value1!),
+        Union5Index.Value2 => case2(Value2!),
+        Union5Index.Value3 => case3(Value3!),
+        Union5Index.Value4 => case4(Value4!),
+        Union5Index.Value5 => case5(Value5!)
     };
     
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5>(T1? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5>(T1 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5>(T2? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5>(T2 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5>(T3? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5>(T3 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5>(T4? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5>(T4 value) => new(value);
 
     /// <summary>
     /// Implicitly cast a value to this union type
     /// </summary>
     /// <param name="value">Value of the union type</param>
-    public static implicit operator Union<T1, T2, T3, T4, T5>(T5? value) => new(value);
+    public static implicit operator Union<T1, T2, T3, T4, T5>(T5 value) => new(value);
     
     /// <inheritdoc cref="Object.ToString"/>
-    public override string? ToString() => ValueIndex switch {
-        Union5Index.Value1 => Value1?.ToString(),
-        Union5Index.Value2 => Value2?.ToString(),
-        Union5Index.Value3 => Value3?.ToString(),
-        Union5Index.Value4 => Value4?.ToString(),
-        Union5Index.Value5 => Value5?.ToString()
+    public override string ToString() => ValueIndex switch {
+        Union5Index.Value1 => Value1!.ToString(),
+        Union5Index.Value2 => Value2!.ToString(),
+        Union5Index.Value3 => Value3!.ToString(),
+        Union5Index.Value4 => Value4!.ToString(),
+        Union5Index.Value5 => Value5!.ToString()
     };
     
     /// <inheritdoc />
     public bool Equals(Union<T1, T2, T3, T4, T5> other) => ValueIndex switch {
-        Union5Index.Value1 when other.ValueIndex is Union5Index.Value1 => EqualityComparer<T1?>.Default.Equals(Value1, other.Value1),
-        Union5Index.Value2 when other.ValueIndex is Union5Index.Value2 => EqualityComparer<T2?>.Default.Equals(Value2, other.Value2),
-        Union5Index.Value3 when other.ValueIndex is Union5Index.Value3 => EqualityComparer<T3?>.Default.Equals(Value3, other.Value3),
-        Union5Index.Value4 when other.ValueIndex is Union5Index.Value4 => EqualityComparer<T4?>.Default.Equals(Value4, other.Value4),
-        Union5Index.Value5 when other.ValueIndex is Union5Index.Value5 => EqualityComparer<T5?>.Default.Equals(Value5, other.Value5),
+        Union5Index.Value1 when other.ValueIndex is Union5Index.Value1 => EqualityComparer<T1>.Default.Equals(Value1!, other.Value1!),
+        Union5Index.Value2 when other.ValueIndex is Union5Index.Value2 => EqualityComparer<T2>.Default.Equals(Value2!, other.Value2!),
+        Union5Index.Value3 when other.ValueIndex is Union5Index.Value3 => EqualityComparer<T3>.Default.Equals(Value3!, other.Value3!),
+        Union5Index.Value4 when other.ValueIndex is Union5Index.Value4 => EqualityComparer<T4>.Default.Equals(Value4!, other.Value4!),
+        Union5Index.Value5 when other.ValueIndex is Union5Index.Value5 => EqualityComparer<T5>.Default.Equals(Value5!, other.Value5!),
         _ => Value?.Equals(other.Value) ?? other.Value is null
     };
     
@@ -280,11 +280,11 @@ public readonly struct Union<T1, T2, T3, T4, T5>: IUnion, IEquatable<Union<T1, T
     
     /// <inheritdoc />
     public override int GetHashCode() => ValueIndex switch {
-        Union5Index.Value1 => EqualityComparer<T1?>.Default.GetHashCode(Value1),
-        Union5Index.Value2 => EqualityComparer<T2?>.Default.GetHashCode(Value2),
-        Union5Index.Value3 => EqualityComparer<T3?>.Default.GetHashCode(Value3),
-        Union5Index.Value4 => EqualityComparer<T4?>.Default.GetHashCode(Value4),
-        Union5Index.Value5 => EqualityComparer<T5?>.Default.GetHashCode(Value5)
+        Union5Index.Value1 => EqualityComparer<T1>.Default.GetHashCode(Value1!),
+        Union5Index.Value2 => EqualityComparer<T2>.Default.GetHashCode(Value2!),
+        Union5Index.Value3 => EqualityComparer<T3>.Default.GetHashCode(Value3!),
+        Union5Index.Value4 => EqualityComparer<T4>.Default.GetHashCode(Value4!),
+        Union5Index.Value5 => EqualityComparer<T5>.Default.GetHashCode(Value5!)
     };
     
     /// <summary>
